@@ -1,0 +1,4 @@
+A simple (at the minute!) app to fetch candidate data from a contituency. 
+
+So far just the bare bones exist:
+main.js instantiaties the view. that's it.
