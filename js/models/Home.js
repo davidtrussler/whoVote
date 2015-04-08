@@ -1,6 +1,6 @@
 var app = app || {}; 
 
-app.Constituency = Backbone.Model.extend({
+app.Home = Backbone.Model.extend({
 	/*
 	defaults: {
 		title: 'They Work!', 
@@ -16,8 +16,30 @@ app.Constituency = Backbone.Model.extend({
 		}); 
 		*/
 
-		// console.log('The Constituency Model has been intialized!'); 
+		console.log('The Home Model has been intialized!'); 
+
+		this.getConstituencies(); 
 	}, 
+
+	getConstituencies: function() {
+		console.log('getConstituencies!');
+
+		// var url = 'http://www.theyworkforyou.com/api/getConstituencies?key=AvizXSBnS6eXAP8bu7EvtKpk'; 
+		var url = 'src/constituencies.json'; 
+		var constituencies = []; 
+
+		$.ajax({
+			// dataType: 'jsonp', 
+			url: url, 
+			success: function(response){
+				response.forEach(function(constituency) {
+					constituencies.push(constituency.name); 
+				}); 
+
+				console.log('constituencies: ', constituencies);
+			}
+		});		
+	}
 
 	/*
 	validate: function(attrs) {

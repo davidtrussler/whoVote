@@ -1,4 +1,11 @@
-A simple (at the minute!) app to fetch candidate data from a contituency. 
+A simple (at the minute!) app to fetch candidate data from a contituency.
 
 So far just the bare bones exist:
-main.js instantiaties the view. that's it.
+	- main.js instantiaties the view, associating with it a model: begin with the home page which provides a form for the user to enter the name of a contituency for which the candidates will be displayed. 
+
+
+
+Later: 
+	- The view attaches an event listener to the <a> tag that:
+		- displays a loading message
+		- calls on the model to load the data for the consitiuency (you don't get a choice of consitituency at the minute: it's Cov NW or it's nothing!)

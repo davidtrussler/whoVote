@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>They Work For You</title>
+		<title>Who can I vote for?</title>
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-		<script src="../lib_common/jquery-1.11.0.min.js"></script>
-		<script src="../lib_common/underscore-min.js"></script>
-		<script src="../lib_common/backbone-min.js"></script>
+		<script src="lib/jquery-1.11.0.min.js"></script>
+		<script src="lib/underscore-min.js"></script>
+		<script src="lib/backbone-min.js"></script>
 	</head>
 
 	<body>
-		<script type="text/template" id="candidatesWrapper">
-			/*
-			<div id="candidates">
-				candidates are listed here
-			</div>
-			*/
+		<!--
+		<script type="text/template" id="loading-template">
+			<p>Loading <%= category %> ...</p>
+		</script>
+		-->
+
+		<script type="text/template" id="home-template">
+			<h1>Who can I vote for?</h1>
+			<p>Enter the name of your constituency to see the candidates</p>
+			<form>
+				<input type="text" name="contituency" value=""/>
+				<button>Go</button>
+			</form>
 		</script>
 
-		<header id="actionbar">
+		<header>
 			header
 		</header>
 
 		<article id="content">
+			<!--
 			<a href="#" id="getCandidates">Get Candidates for Coventry North West constituency</a>
-			<div id="candidates">loading ...</div>
+			<div id="candidates"><p>The candidates</p></div>
+			-->
 		</article>
 
 		<footer>
 			footer
 		</footer>
 
-		<!-- <script src="js/models/Constituency.js"></script> -->
-		<script src="js/views/Constituency.js"></script>
+		<script src="js/models/Home.js"></script>
+		<!-- <script src="js/collections/Constituency.js"></script> -->
+		<script src="js/views/Home.js"></script>
 		<script src="js/main.js"></script>
 	</body>
 </html>
