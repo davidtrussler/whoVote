@@ -1,7 +1,8 @@
 A simple (at the minute!) app to fetch candidate data from a contituency.
 
 So far just the bare bones exist:
-	- main.js instantiaties the view, associating with it a model: begin with the home page which provides a form for the user to enter the name of a contituency for which the candidates will be displayed. 
+	- main.js instantiaties the Home view, associating with it the Home model: 
+	begin with the home page which provides a form for the user to enter the name of a constituency for which the candidates will be displayed. 
 
 
 

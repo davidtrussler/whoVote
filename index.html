@@ -9,6 +9,8 @@
 		<script src="lib/jquery-1.11.0.min.js"></script>
 		<script src="lib/underscore-min.js"></script>
 		<script src="lib/backbone-min.js"></script>
+
+		<link type="text/css" href="css/main.css" rel="stylesheet"/>
 	</head>
 
 	<body>
@@ -22,9 +24,23 @@
 			<h1>Who can I vote for?</h1>
 			<p>Enter the name of your constituency to see the candidates</p>
 			<form>
-				<input type="text" name="contituency" value=""/>
+				<input type="text" name="constituency" value=""/>
 				<button>Go</button>
 			</form>
+
+			<ul id="predictiveText">
+				<!--
+				<li>predictive text 1</li>
+				<li>predictive text 2</li>
+				<li>predictive text 3</li>
+				-->
+			</ul>
+		</script>
+
+		<script type="text/template" id="predictiveText-template">
+			<li>
+				<a href="#"><%= name %></a>
+			</li>
 		</script>
 
 		<header>
@@ -42,9 +58,11 @@
 			footer
 		</footer>
 
-		<script src="js/models/Home.js"></script>
-		<!-- <script src="js/collections/Constituency.js"></script> -->
 		<script src="js/views/Home.js"></script>
+		<script src="js/models/Home.js"></script>
+		<!-- <script src="js/collections/Home.js"></script> -->
+		<script src="js/views/PredictiveText.js"></script>
+		<script src="js/models/PredictiveText.js"></script>
 		<script src="js/main.js"></script>
 	</body>
 </html>

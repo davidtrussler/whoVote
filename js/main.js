@@ -1,16 +1,18 @@
-// var app = app || {}; 
+/*
+var app = app || {
+	constituencies: []
+}; 
+*/
 
 $(document).ready(function() {
-	var homeModel = new app.Home(); 
-	// var constituencyModel = new app.Constituency(); 
+	// var homeModel = new app.Home(); 
 
-	console.log('model:', homeModel); 
+	// console.log('model:', homeModel); 
 
 	var homeView = new app.HomeView({
-	// var view = new app.ConstituencyView({
-		model: homeModel
-		// model: constituencyModel
+		// model: homeModel
+		model: new app.Home()
 	}); 
 
-	console.log('homeView: ', homeView); 
+	// console.log('homeView: ', homeView); 
 });

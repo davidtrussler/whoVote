@@ -1,0 +1,7 @@
+/* basic CSS at the minute for ease of development */
+
+#predictiveText {
+	position: absolute; 
+	top: 0;
+	right: 0; 
+}

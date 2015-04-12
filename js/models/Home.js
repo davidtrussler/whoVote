@@ -1,22 +1,10 @@
-var app = app || {}; 
+var app = app || {
+	// constituencies: []
+}; 
 
 app.Home = Backbone.Model.extend({
-	/*
-	defaults: {
-		title: 'They Work!', 
-		completed: false
-	}, 
-	*/
-
 	initialize: function() {
-		/*
-		this.on('change', function() {
-			console.log('the model has changed!'); 
-			console.log('changed: ', this.changed)
-		}); 
-		*/
-
-		console.log('The Home Model has been intialized!'); 
+		// console.log('The Home Model has been intialized!'); 
 
 		this.getConstituencies(); 
 	}, 
@@ -26,50 +14,41 @@ app.Home = Backbone.Model.extend({
 
 		// var url = 'http://www.theyworkforyou.com/api/getConstituencies?key=AvizXSBnS6eXAP8bu7EvtKpk'; 
 		var url = 'src/constituencies.json'; 
-		var constituencies = []; 
+		app.constituencies = []; 
 
 		$.ajax({
 			// dataType: 'jsonp', 
 			url: url, 
 			success: function(response){
 				response.forEach(function(constituency) {
-					constituencies.push(constituency.name); 
+					app.constituencies.push(constituency.name.toLowerCase()); 
+				});
+			}
+		});	
+	}, 
+
+	getNames: function(input) {
+		console.log('input: ', input); 
+
+		// var validNames = []; 
+		var predictiveTextWrapper = $('#predictiveText'); 
+
+		$(predictiveTextWrapper).html(''); 
+
+		app.constituencies.forEach(function(constituency) {
+			if (constituency.indexOf(input.toLowerCase()) != -1) {
+				// validNames.push(constituency); 
+
+				// add to list of names
+				var view = new app.PredictiveTextView({
+					model: new app.PredictiveText()
 				}); 
 
-				console.log('constituencies: ', constituencies);
+				$(predictiveTextWrapper).append(view.render(constituency)); 
 			}
-		});		
+		}); 
+
+		// return validNames; 
+		// TODO: pass this array to predictiveText view and populate the list
 	}
-
-	/*
-	validate: function(attrs) {
-		console.log('validate: ', attrs); 
-	},
-	*/
-
-	/*
-	getCandidates: function() {
-		console.log('getCandidates!');
-
-		$.ajax({url: 'http://yournextmp.popit.mysociety.org/api/v0.1/posts/65575?embed=membership.person', 
-			success: function(response){
-				console.log('response: ', response);
-				return response; 
-			}
-		});		
-	} 
-	*/	
-}); 
-
-// var constituency = new app.Constituency(); 
-
-// constituency.set('title', 'The new title', {validate: true}); 
-
-// console.log('constituency: ', JSON.stringify(constituency)); 
-// console.log('title: ', constituency.get('title')); 
-// console.log('attributes: ', constituency.attributes); 
-
-// constituency.getCandidates(); 
-
-// constituency.sync('put', this, {url: 'http://localhost'}); 
-// constituency.save(); 
+});
