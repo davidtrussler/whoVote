@@ -11,12 +11,6 @@ app.PredictiveTextView = Backbone.View.extend ({
 	},
 	*/
 
-	/*
-	events: {
-		// 'keyup input[name="constituency"]': 'predictText', 
-	}, 
-	*/
-
 	render: function(constituency) {
 		return this.predictiveTextTemplate({name: constituency}); 
 	}, 

@@ -23,8 +23,8 @@
 		<script type="text/template" id="home-template">
 			<h1>Who can I vote for?</h1>
 			<p>Enter the name of your constituency to see the candidates</p>
-			<form>
-				<input type="text" name="constituency" value=""/>
+			<form name="constituencySearch">
+				<input type="text" name="constituency" value="" autocomplete="off"/>
 				<button>Go</button>
 			</form>
 
@@ -39,7 +39,9 @@
 
 		<script type="text/template" id="predictiveText-template">
 			<li>
-				<a href="#"><%= name %></a>
+				<a href="#" data-value="<%= name %>">
+					<%= name %>
+				</a>
 			</li>
 		</script>
 
