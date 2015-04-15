@@ -5,3 +5,15 @@
 	top: 0;
 	right: 0; 
 }
+
+.partyName {
+	margin: 0 0 0 0.25em;
+}
+
+.partyName:before {
+	content: '(';
+}
+
+.partyName:after {
+	content: ')';
+}

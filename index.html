@@ -21,20 +21,14 @@
 		-->
 
 		<script type="text/template" id="home-template">
-			<h1>Who can I vote for?</h1>
 			<p>Enter the name of your constituency to see the candidates</p>
+
 			<form name="constituencySearch">
 				<input type="text" name="constituency" value="" autocomplete="off"/>
 				<button>Go</button>
 			</form>
 
-			<ul id="predictiveText">
-				<!--
-				<li>predictive text 1</li>
-				<li>predictive text 2</li>
-				<li>predictive text 3</li>
-				-->
-			</ul>
+			<ul id="predictiveText"></ul>
 		</script>
 
 		<script type="text/template" id="predictiveText-template">
@@ -45,16 +39,23 @@
 			</li>
 		</script>
 
+		<script type="text/template" id="candidates-template">
+			<h2>The candidates for your (TODO: name it!) constituency</h2>
+			<ul id="candidates"></ul>
+		</script>
+
+		<script type="text/template" id="candidate-template">
+			<li>
+				<span class="candidateName"><%=candidateName%></span>
+				<span class="partyName"><%=partyName%></span>
+			</li>
+		</script>
+
 		<header>
-			header
+			<h1>Who can I vote for?</h1>
 		</header>
 
-		<article id="content">
-			<!--
-			<a href="#" id="getCandidates">Get Candidates for Coventry North West constituency</a>
-			<div id="candidates"><p>The candidates</p></div>
-			-->
-		</article>
+		<article id="content"></article>
 
 		<footer>
 			footer
@@ -65,6 +66,10 @@
 		<!-- <script src="js/collections/Home.js"></script> -->
 		<script src="js/views/PredictiveText.js"></script>
 		<script src="js/models/PredictiveText.js"></script>
+		<script src="js/views/Constituency.js"></script>
+		<script src="js/models/Constituency.js"></script>
+		<script src="js/views/Candidate.js"></script>
+		<script src="js/models/Candidate.js"></script>
 		<script src="js/main.js"></script>
 	</body>
 </html>
