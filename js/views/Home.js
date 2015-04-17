@@ -1,6 +1,4 @@
-var app = app || {
-	// constituencies: []
-}; 
+var app = app || {}; 
 
 app.HomeView = Backbone.View.extend ({
 	// app parent dom element
@@ -15,8 +13,9 @@ app.HomeView = Backbone.View.extend ({
 
 	events: {
 		// 'focus input[name="constituency"]': 'predictiveTextDisplay'
-		'keyup input[name="constituency"]': 'predictText', 
+		'keyup input[name="constituencyName"]': 'predictText', 
 		'click #predictiveText': 'setName', 
+		'submit form[name="constituencySearch"]': 'getCandidates'
 	}, 
 
 	// update value of input with constituency name
@@ -25,7 +24,10 @@ app.HomeView = Backbone.View.extend ({
 
 		var form = this.$el.children('form')[0]; 
 
-		$(form).children('input')[0].value = $(e.target).attr('data-value'); 
+		console.log('target: ', e.target); 
+
+		$(form).children('input[name="constituencyName"]')[0].value = e.target.textContent.trim(); 
+		$(form).children('input[name="constituencyId"]')[0].value = e.target.dataset.id; 
 	}, 
 
 	// show the initial main content
@@ -38,17 +40,14 @@ app.HomeView = Backbone.View.extend ({
 	predictText: function(e) {
 		console.log('predictText!'); 
 
-		// var validNames = this.model.getNames(e.target.value); 
 		this.model.getNames(e.target.value); 
-
-		// console.log('validNames: ', validNames); 
-	}, 
+	},
 
 	// set the position of the predictive text list based on position of input
 	setPosition: function() {
 		console.log('setPosition!');
 
-		var input = this.$el.find('input')[0]; 
+		var input = this.$el.find('input[name="constituencyName"]'); 
 		
 		$('#predictiveText').css({
 			'left': $(input).position().left,
@@ -57,13 +56,23 @@ app.HomeView = Backbone.View.extend ({
 		}); 
 	}, 
 
-	/*
-	predictiveTextDisplay: function() {
-		console.log('predictiveTextDisplay!'); 
+	getCandidates: function(e) {
+		console.log('getCandidates!'); 
 
-		new app.PredictiveTextView({
-			model: new app.PredictiveText()
+		var form = $('form[name="constituencySearch"]')[0]; 
+
+		// console.log('form data: ', $(form).serializeArray()); 
+
+		var constituencyId = $(form).children('input[name=constituencyId]').val(); 
+
+		console.log('constituencyId: ', constituencyId); 
+
+		var view = new app.ConstituencyView({
+			model: new app.Constituency()
 		}); 
+
+		view.showCandidates(constituencyId); 
+
+		e.preventDefault(); 
 	}
-	*/
 });

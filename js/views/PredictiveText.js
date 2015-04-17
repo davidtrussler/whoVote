@@ -12,7 +12,10 @@ app.PredictiveTextView = Backbone.View.extend ({
 	*/
 
 	render: function(constituency) {
-		return this.predictiveTextTemplate({name: constituency}); 
+		return this.predictiveTextTemplate({
+			name: constituency.name, 
+			id: constituency.id
+		}); 
 	}, 
 
 	/*
