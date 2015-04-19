@@ -15,7 +15,9 @@ app.ConstituencyView = Backbone.View.extend ({
 
 		// var constituencyId = response.attributes.result.id; 
 
-		this.$el.html(this.candidatesTemplate);
+		this.$el.html(this.candidatesTemplate({
+			constituencyName: response.attributes.result.area.name
+		}));
 	
 		var candidates = this.model.changed.result.memberships; 
 
