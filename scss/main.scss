@@ -1,0 +1,119 @@
+/*
+ * BEGIN CSS Mobile Reset -- 
+ * based on http://www.vcarrer.com/2010/11/css-mobile-reset.html
+**/
+html, 
+body {
+	margin: 0;
+	padding: 0; 
+	border: 0;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	line-height: 1.25;
+	/* font-size: 0.9em; */
+	-webkit-text-size-adjust: none; /*for iOS on change of orientation */
+}
+
+p, ul, h1, h2, h3, h4, 
+fieldset, legend, input, button {
+	padding: 0; 
+	margin: 0; 
+}
+
+ul {
+	list-style: none; 
+}
+
+table { 
+	width: 100%; 
+	border-collapse: collapse;
+	border-spacing: 0; 
+}
+/* -- END CSS Mobile Reset */
+
+/* variables -- */
+$backgroundColour: #666; 
+/* -- variables */
+
+/* basic CSS at the minute for ease of development -- */
+.partyName {
+	margin: 0 0 0 0.25em;
+}
+
+.partyName:before {
+	content: '(';
+}
+
+.partyName:after {
+	content: ')';
+}
+/* -- basic CSS at the minute for ease of development */
+
+/* production styles -- */
+/* general -- */
+.hidden {
+	display: none; 
+}
+
+header, article /* , footer */ {
+	box-sizing: border-box;
+}
+
+header /* , footer */ {
+	position: fixed; 
+	line-height: 1;
+	color: #fff; 
+	background: $backgroundColour; 
+	width: 100%; 
+	padding: 1em 4% 
+}
+
+article /* , footer */ {
+	margin: 0 4%;
+	padding: 1em 0; 
+}
+
+/*
+footer {
+	position: absolute;
+	bottom: 0; 
+}
+*/
+/* -- general */
+
+/* home screen -- */
+#predictiveText {
+	position: absolute; 
+	border: solid 1px; 
+	/* box-sizing: border-box; */
+	/* top: 0;
+	right: 0; */
+}
+
+#predictiveText > li {
+	border-top: solid 1px; 
+	padding: 0.125em 0.25em; 
+}
+
+#predictiveText > li:first-child {
+	border-top: none; 
+}
+
+#predictiveText > li > a {
+	text-decoration: none; 
+}
+/* -- home screen */
+
+/* candidate screen -- */
+#candidates > li {
+	padding: 1em 0; 
+	border-top: solid 1px; 
+}
+
+#candidates > li:first-child {
+	border-top: none; 
+}
+/* -- candidate screen */
+/* -- production styles */

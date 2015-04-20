@@ -33,7 +33,7 @@ app.HomeView = Backbone.View.extend ({
 	// show the initial main content
 	render: function(response) {
 		this.$el.html(this.homeTemplate);
-		this.setPosition(); 
+		// this.setPosition(); 
 	}, 
 
 	// get the valid names for the predictive text 
@@ -41,6 +41,8 @@ app.HomeView = Backbone.View.extend ({
 		console.log('predictText!'); 
 
 		this.model.getNames(e.target.value); 
+
+		this.setPosition(); 
 	},
 
 	// set the position of the predictive text list based on position of input
@@ -49,11 +51,13 @@ app.HomeView = Backbone.View.extend ({
 
 		var input = this.$el.find('input[name="constituencyName"]'); 
 		
-		$('#predictiveText').css({
-			'left': $(input).position().left,
-			'top': $(input).position().top + $(input).height(), 
-			'width': $(input).width()
-		}); 
+		$('#predictiveText')
+			.css({
+				'left': $(input).position().left,
+				'top': $(input).position().top + $(input).height(), 
+				'width': $(input).width()
+			})
+			.removeClass('hidden'); 
 	}, 
 
 	getCandidates: function(e) {
