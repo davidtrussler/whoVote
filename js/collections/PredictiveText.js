@@ -1,7 +1,7 @@
 var app = app || {}; 
 
-app.PredictiveTextList = Backbone.Collection.extend ({
-	model: app.PredictiveText, 
+app.PredictiveTextCollection = Backbone.Collection.extend ({
+	// model: app.PredictiveText, 
 
 	// el: '#content', 
 
@@ -11,12 +11,6 @@ app.PredictiveTextList = Backbone.Collection.extend ({
 	initialize: function() {
 		this.render(); 
 	},
-	*/
-
-	/*
-	events: {
-		// 'keyup input[name="constituency"]': 'predictText', 
-	}, 
 	*/
 
 	/*

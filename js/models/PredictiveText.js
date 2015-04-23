@@ -3,6 +3,11 @@ var app = app || {};
 app.PredictiveText = Backbone.Model.extend({
 	initialize: function() {
 		console.log('The Predictive Text Model has been intialized!'); 
+	}, 
+
+	defaults: {
+		name: '', 
+		id: 0
 	}
 
 	/*

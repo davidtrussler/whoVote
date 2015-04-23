@@ -24,7 +24,7 @@ app.Home = Backbone.Model.extend({
 					app.constituencies.push(response[prop]); 
 				}
 
-				console.log('constituencies: ', app.constituencies); 
+				// console.log('constituencies: ', app.constituencies); 
 
 				/*
 				response.forEach(function(constituency) {
@@ -41,25 +41,52 @@ app.Home = Backbone.Model.extend({
 		});	
 	}, 
 
-	getNames: function(input) {
-		console.log('getNames!'); 
+	getPredictiveList: function(input) {
+		console.log('getPredictiveList!'); 
 		console.log('input: ', input); 
 
-		var predictiveTextWrapper = $('#predictiveText'); 
+		// new app.PredictiveTextView(input); 
 
-		$(predictiveTextWrapper).html(''); 
+		// var predictiveTextWrapper = $('#predictiveText'); 
+
+		// $(predictiveTextWrapper).html(''); 
+
+		var predictiveTextList = [];  // new app.PredictiveTextCollection(); 
 
 		app.constituencies.forEach(function(constituency) {
 			if (constituency.name.toLowerCase().indexOf(input.toLowerCase()) != -1) {
+				console.log('constituency: ', constituency); 
+
 				// add to list of names
-				var view = new app.PredictiveTextView({
-					model: new app.PredictiveText()
+				predictiveTextList.push({
+					'id': constituency.id, 
+					'name': constituency.name, 
 				}); 
 
-				$(predictiveTextWrapper).append(view.render(constituency)); 
+				/*
+				predictiveTextList.add({
+					model: new app.PredictiveText({
+						id: constituency.id, 
+						name: constituency.name
+					})
+				}); 
+				*/
+
+				// console.log('constituency name added to list!'); 
+
+				/*
+				new app.PredictiveTextView({
+					model: new app.PredictiveText()
+					// constituency.name
+				}); 
+				*/
+
+				// $(predictiveTextWrapper).append(view.render(constituency)); 
 			}
 		}); 
+
+		console.log('predictiveTextList: ', predictiveTextList); 
+
+		new app.PredictiveTextView(predictiveTextList); 
 	}
 });
-
-// 02477952030

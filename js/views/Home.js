@@ -13,7 +13,7 @@ app.HomeView = Backbone.View.extend ({
 
 	events: {
 		// 'focus input[name="constituency"]': 'predictiveTextDisplay'
-		'keyup input[name="constituencyName"]': 'predictText', 
+		'keyup input[name="constituencyName"]': 'getPredictiveText', 
 		'click #predictiveText': 'setName', 
 		'submit form[name="constituencySearch"]': 'getCandidates'
 	}, 
@@ -24,7 +24,7 @@ app.HomeView = Backbone.View.extend ({
 
 		var form = this.$el.children('form')[0]; 
 
-		console.log('target: ', e.target); 
+		// console.log('target: ', e.target); 
 
 		$(form).children('input[name="constituencyName"]')[0].value = e.target.textContent.trim(); 
 		$(form).children('input[name="constituencyId"]')[0].value = e.target.dataset.id; 
@@ -37,10 +37,15 @@ app.HomeView = Backbone.View.extend ({
 	}, 
 
 	// get the valid names for the predictive text 
-	predictText: function(e) {
-		console.log('predictText!'); 
+	getPredictiveText: function(e) {
+		console.log('getPredictiveText!'); 
 
-		this.model.getNames(e.target.value); 
+		this.model.getPredictiveList(e.target.value); 
+
+		// the view for the collection of predictive text suggestions
+		// TODO: breaks here!
+		// Renders each individual <li> within parent <ul>
+		// new app.PredictiveTextView(); 
 
 		this.setPosition(); 
 	},
@@ -69,7 +74,7 @@ app.HomeView = Backbone.View.extend ({
 
 		var constituencyId = $(form).children('input[name=constituencyId]').val(); 
 
-		console.log('constituencyId: ', constituencyId); 
+		// console.log('constituencyId: ', constituencyId); 
 
 		var view = new app.ConstituencyView({
 			model: new app.Constituency()
