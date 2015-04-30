@@ -18,6 +18,8 @@ app.PredictiveTextView = Backbone.View.extend ({
 		// console.log('app.PredictiveTextCollection: ', app.PredictiveTextCollection); 
 		// console.log('constituencyName: ', constituencyName); 
 
+		this.$el.html(''); 
+
 		this.collection.each(function(item) {
 			this.renderPredictiveTextItem(item); 
 		}, this); 
