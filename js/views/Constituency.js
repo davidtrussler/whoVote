@@ -6,15 +6,18 @@ app.ConstituencyView = Backbone.View.extend ({
 	candidatesTemplate: _.template($('#candidates-template').html()),
 
 	initialize: function() {
+		console.log('The Constituency View has been intialized!'); 
+		// console.log('constituencyId: ', constituencyId); 
 		// this.showCandidates(); 
 	},
 
 	render: function(response) {
 		console.log('render!'); 
-		console.log('response: ', response); 
+		console.log('constituencyId: ', constituencyId); 
 
 		// var constituencyId = response.attributes.result.id; 
 
+		/*
 		this.$el.html(this.candidatesTemplate({
 			constituencyName: response.attributes.result.area.name
 		}));
@@ -41,16 +44,24 @@ app.ConstituencyView = Backbone.View.extend ({
 				}
 			}
 		}); 
+		*/
 	}, 
 
 	showCandidates: function(constituencyId) {
 		console.log('showCandidates!'); 
 
+		// TODO: use model to do ajax request and then call render method to display the results
+		console.log('model: ', this.model); 
+
+		this.model.getCandidates(constituencyId); 
+
+		/*
 		this.model.fetch({
 			url: 'http://yournextmp.popit.mysociety.org/api/v0.1/posts/' + constituencyId + '?embed=membership.person', 
 			// url: 'src/constituency.json'
 		}); 
 
 		this.model.bind('change', this.render, this);
+		*/
 	}
 }); 

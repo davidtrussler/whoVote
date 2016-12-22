@@ -24,7 +24,7 @@ app.HomeView = Backbone.View.extend ({
 
 		var form = this.$el.children('form')[0]; 
 
-		// console.log('target: ', e.target); 
+		console.log('target: ', e.target.dataset.id); 
 
 		$(form).children('input[name="constituencyName"]')[0].value = e.target.textContent.trim(); 
 		$(form).children('input[name="constituencyId"]')[0].value = e.target.dataset.id; 
@@ -74,10 +74,10 @@ app.HomeView = Backbone.View.extend ({
 
 		var constituencyId = $(form).children('input[name=constituencyId]').val(); 
 
-		// console.log('constituencyId: ', constituencyId); 
+		console.log('constituencyId: ', constituencyId); 
 
 		var view = new app.ConstituencyView({
-			model: new app.Constituency()
+			model: new app.Constituency(constituencyId)
 		}); 
 
 		view.showCandidates(constituencyId); 
